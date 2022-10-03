@@ -6,6 +6,7 @@ import com.puri12.spring1.entity.Post;
 import com.puri12.spring1.repository.PostRepository;
 import com.puri12.spring1.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class PostController {
 
     @GetMapping("/api/post")
     public ResponseEntity<BasicResponse> getPosts() {
-        return postService.response(Collections.singletonList(postRepository.findAllByOrderByModifiedAtDesc()));
+        return postService.response(Collections.singletonList(postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"))));
     }
 
 
