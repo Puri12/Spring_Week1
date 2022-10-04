@@ -1,6 +1,7 @@
 package com.puri12.spring1.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.puri12.spring1.dto.PostRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Post extends Timestamped{
     @Column(nullable = false)
     private String contents;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String passwd;
 

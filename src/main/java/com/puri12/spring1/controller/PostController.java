@@ -22,7 +22,8 @@ public class PostController {
 
     @GetMapping("/api/post")
     public ResponseEntity<BasicResponse> getPosts() {
-        return postService.response(Collections.singletonList(postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"))));
+//        return postService.response(Collections.singletonList(postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"))));
+        return postService.response(Collections.singletonList(postRepository.findAllByOrderByCreatedAtDesc()));
     }
 
 
