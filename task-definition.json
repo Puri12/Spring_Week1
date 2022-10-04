@@ -1,0 +1,82 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:223613207188:task-definition/hanghae99-puri12:1",
+    "containerDefinitions": [
+        {
+            "name": "spring_week1",
+            "image": "223613207188.dkr.ecr.ap-northeast-2.amazonaws.com/spring_week1:4618fc504cb1cb13bf165352b12c6849db474ded",
+            "cpu": 0,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "ulimits": [],
+            "systemControls": []
+        }
+    ],
+    "family": "hanghae99-puri12",
+    "executionRoleArn": "arn:aws:iam::223613207188:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2022-10-04T06:18:38.289Z",
+    "registeredBy": "arn:aws:iam::223613207188:root",
+    "tags": [
+        {
+            "key": "ecs:taskDefinition:createdFrom",
+            "value": "ecs-console-v2"
+        },
+        {
+            "key": "ecs:taskDefinition:stackId",
+            "value": "arn:aws:cloudformation:ap-northeast-2:223613207188:stack/ECS-Console-V2-TaskDefinition-f313e386-d826-415f-acd7-c32a726f3a6b/5f4dbf00-43ac-11ed-97d9-0206944d2bac"
+        }
+    ]
+}
