@@ -70,6 +70,6 @@ jobs:
       with:
         # task-definition: task-definition.json
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: spring_week1
+        service: hanghae99-puri12
         cluster: hanghae99-puri12
         wait-for-service-stability: true
