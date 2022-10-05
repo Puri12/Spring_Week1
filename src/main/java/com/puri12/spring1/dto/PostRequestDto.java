@@ -15,15 +15,17 @@ public class PostRequestDto {
     private String title;
     private String contents;
     private String passwd;
+    private String category;
 
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
 
-    public PostRequestDto(String username, String title, String contents, String passwd) {
+    public PostRequestDto(String username, String title, String contents, String category, String passwd) {
         this.username = username;
         this.title = title;
         this.contents = contents;
+        this.category = category;
         this.passwd = passwd;
     }
 }

@@ -31,7 +31,6 @@ public class PostService {
         } catch (Exception e) {
             basicResponse = BasicResponse.builder()
                     .success(HttpStatus.OK.is2xxSuccessful())
-                    .error(e.toString())
                     .build();
             return new ResponseEntity<>(basicResponse, HttpStatus.OK);
         }
@@ -52,5 +51,17 @@ public class PostService {
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
         );
         return post.getPasswd().equals(requestDto.getPasswd());
+    }
+
+    @Transactional
+    public Boolean delete(Long id, String passwd) {
+        Post post = postrepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+        );
+        if (post.getPasswd().equals(passwd)) {
+            postrepository.deleteById(id);
+            return HttpStatus.OK.is2xxSuccessful();
+        }
+        return false;
     }
 }

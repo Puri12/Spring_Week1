@@ -22,7 +22,9 @@ public class Spring1Application {
     @Bean
     public CommandLineRunner demo(PostRepository postRepository, PostService postService) {
         return (args) -> {
-            postRepository.save(new Post("test", "tutle", "contents", "passwd"));
+
+            for (int i = 0; i < 100; i++)
+                postRepository.save(new Post("test", "tutle"+i, "contents", "passwd"));
         };
     }
 
