@@ -6,6 +6,8 @@ import com.puri12.spring1.dto.PostRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -31,10 +33,10 @@ public class Post extends Timestamped{
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @JsonIgnore
+//    @JsonIgnore
+    @Setter
     @Column(nullable = false)
     private String passwd;
-
 
 
     public Post(String usernamename, String title, String contents, Category category, String passwd) {

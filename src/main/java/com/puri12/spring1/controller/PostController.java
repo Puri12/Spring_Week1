@@ -64,8 +64,7 @@ public class PostController {
 
     @PostMapping("/api/post")
     public ResponseEntity<BasicResponse> createPost(@RequestBody PostRequestDto requestDto) {
-        Post post = new Post(requestDto);
-        return postService.response(Collections.singletonList(postRepository.save(post)));
+        return postService.create(requestDto);
     }
 
     @PutMapping("/api/post/{id}")
