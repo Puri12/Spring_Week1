@@ -8,10 +8,10 @@
 name: Java CI/CD
 
 on:
-  push:
-    branches: [ "main" ]
+#   push:
+#     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+#     branches: [ "main" ]
     
 env:
   IMAGE_TAG: latest
@@ -56,3 +56,20 @@ jobs:
         docker build -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG .
         docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
         echo "::set-output name=image::${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG"
+
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: spring_week1
+        image: ${{ steps.build-image.outputs.image }}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        # task-definition: task-definition.json
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: hanghae99-puri12
+        cluster: hanghae99-puri12
+        wait-for-service-stability: true
