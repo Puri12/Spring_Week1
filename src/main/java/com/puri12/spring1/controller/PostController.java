@@ -49,6 +49,12 @@ public class PostController {
         return postService.response(Collections.singletonList(postRepository.findAll(pageable)));
     }
 
+
+    @GetMapping("/api/find")
+    public ResponseEntity<BasicResponse> getPosts(@RequestParam(value = "category") String category) {
+        return postService.response(Collections.singletonList(postRepository.findAllByCategory(category)));
+    }
+
     @PostMapping("/api/post")
     public ResponseEntity<BasicResponse> createPost(@RequestBody PostRequestDto requestDto) {
         Post post = new Post(requestDto);

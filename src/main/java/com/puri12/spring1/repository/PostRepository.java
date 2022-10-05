@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Object> findAllByOrderByCreatedAtDesc();
+    List<Object> findAllByCategory(String category);
+
 }

@@ -22,9 +22,12 @@ public class Spring1Application {
     @Bean
     public CommandLineRunner demo(PostRepository postRepository, PostService postService) {
         return (args) -> {
+            int num = 0;
 
-            for (int i = 0; i < 100; i++)
-                postRepository.save(new Post("test", "tutle"+i, "contents", "passwd"));
+            for (int i = 0; i < 100; i++) {
+                num = (int) (Math.random()*19) + 1;
+                postRepository.save(new Post("test", "title"+i, "contents" + num , "category" + num, "passwd"));
+            }
         };
     }
 

@@ -28,20 +28,25 @@ public class Post extends Timestamped{
     @Column(nullable = false)
     private String contents;
 
+    @Column(nullable = false)
+    private String category;
+
     @JsonIgnore
     @Column(nullable = false)
     private String passwd;
 
-    public Post(String usernamename, String title, String contents, String passwd) {
+    public Post(String usernamename, String title, String contents, String category, String passwd) {
         this.username = usernamename;
         this.title = title;
         this.contents = contents;
+        this.category = category;
         this.passwd = passwd;
     }
     public Post(PostRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
+        this.category = requestDto.getCategory();
         this.passwd = requestDto.getPasswd();
         this.setCreatedAt(requestDto.getCreatedAt());
         this.setModifiedAt(requestDto.getModifiedAt());
@@ -51,6 +56,7 @@ public class Post extends Timestamped{
         this.username = requestDto.getUsername();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
+        this.category = requestDto.getCategory();
         this.passwd = requestDto.getPasswd();
     }
 }
