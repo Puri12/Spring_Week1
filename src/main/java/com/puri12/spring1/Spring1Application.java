@@ -1,5 +1,6 @@
 package com.puri12.spring1;
 
+import com.puri12.spring1.entity.Category;
 import com.puri12.spring1.entity.Post;
 import com.puri12.spring1.repository.PostRepository;
 import com.puri12.spring1.service.PostService;
@@ -15,7 +16,6 @@ public class Spring1Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Spring1Application.class, args);
-
     }
 
     // Week02Application.java 의 main 함수 아래에 붙여주세요.
@@ -26,7 +26,7 @@ public class Spring1Application {
 
             for (int i = 0; i < 100; i++) {
                 num = (int) (Math.random()*19) + 1;
-                postRepository.save(new Post("test", "title"+i, "contents" + num , "category" + num, "passwd"));
+                postRepository.save(new Post("test", "title"+i, "contents" + num , Category.findById(num), "passwd"));
             }
         };
     }

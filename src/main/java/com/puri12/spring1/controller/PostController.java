@@ -2,6 +2,7 @@ package com.puri12.spring1.controller;
 
 import com.puri12.spring1.dto.PostRequestDto;
 import com.puri12.spring1.dto.BasicResponse;
+import com.puri12.spring1.entity.Category;
 import com.puri12.spring1.entity.Post;
 import com.puri12.spring1.repository.PostRepository;
 import com.puri12.spring1.service.PostService;
@@ -14,6 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +25,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 public class PostController {
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
     private final PostRepository postRepository;
     private final PostService postService;
@@ -45,13 +52,13 @@ public class PostController {
     }
 
     @GetMapping("/api/list")
-    public ResponseEntity<BasicResponse> getPosts(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public ResponseEntity<BasicResponse> getList(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         return postService.response(Collections.singletonList(postRepository.findAll(pageable)));
     }
 
 
     @GetMapping("/api/find")
-    public ResponseEntity<BasicResponse> getPosts(@RequestParam(value = "category") String category) {
+    public ResponseEntity<BasicResponse> fildCategory(@RequestParam(value = "category") String category) {
         return postService.response(Collections.singletonList(postRepository.findAllByCategory(category)));
     }
 
@@ -81,6 +88,7 @@ public class PostController {
             @PathVariable Long id,
             @RequestBody PostRequestDto requestDto
     ) {
+        System.out.println(requestDto.getPasswd());
         return postService.response(Collections.singletonList(postService.delete(id, requestDto.getPasswd())));
     }
 
