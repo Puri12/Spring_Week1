@@ -1,15 +1,12 @@
-package com.puri12.spring1.entity;
+package com.puri12.spring1.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.puri12.spring1.dto.PostRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @NoArgsConstructor // 기본생성자를 만듭니다.
 @Getter

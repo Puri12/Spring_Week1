@@ -1,6 +1,6 @@
 package com.puri12.spring1;
 
-import com.puri12.spring1.entity.Post;
+import com.puri12.spring1.model.Post;
 import com.puri12.spring1.repository.PostRepository;
 import com.puri12.spring1.service.PostService;
 import org.springframework.boot.CommandLineRunner;

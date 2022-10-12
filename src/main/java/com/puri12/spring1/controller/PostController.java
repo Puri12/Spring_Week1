@@ -2,11 +2,10 @@ package com.puri12.spring1.controller;
 
 import com.puri12.spring1.dto.PostRequestDto;
 import com.puri12.spring1.dto.BasicResponse;
-import com.puri12.spring1.entity.Post;
+import com.puri12.spring1.model.Post;
 import com.puri12.spring1.repository.PostRepository;
 import com.puri12.spring1.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

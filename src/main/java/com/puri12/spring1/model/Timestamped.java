@@ -1,4 +1,4 @@
-package com.puri12.spring1.entity;
+package com.puri12.spring1.model;
 
 import lombok.Getter;
 import lombok.Setter;
